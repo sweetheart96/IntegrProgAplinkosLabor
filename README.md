@@ -1,0 +1,2 @@
+# IntegrProgAplinkosLabor
+Integruotu programavimo aplinku laboratorinis darbas
