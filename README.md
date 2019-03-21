@@ -10,4 +10,5 @@ Integruotu programavimo aplinku laboratorinis darbas
 
 Pastebejimas sekanciai versijai: ar duoti galimybe prideti mokini be pazymiu (be namu darbu pazymiu ir be egzamino pazymiu)?
 
-Paleidimo instrukcija: initial programa veikia su list'ais, kode yra 2 uzkomentuotos eilutes su prierasu " - realizacija su masyvu". Jas atkomentavus ir uzkomentavus kintamaji, eilute auksciau, programa prades veikti su masyvais.
+# Paleidimo instrukcija:
+Initial programa veikia su list'ais, kode yra 2 uzkomentuotos eilutes su prierasu " - realizacija su masyvu". Jas atkomentavus ir uzkomentavus kintamaji, eilute auksciau, programa prades veikti su masyvais.
