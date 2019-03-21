@@ -1,11 +1,11 @@
 ﻿using Shared.Helpers;
-using StudentApp.Entity;
-using StudentApp.ViewModels;
+using StudentAppWithArray.Entity;
+using StudentAppWithArray.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace StudentApp.Service
+namespace StudentAppWithArray.Service
 {
     public static class ConsoleHelper
     {
@@ -96,15 +96,16 @@ namespace StudentApp.Service
                     studentDetails.Add(Console.ReadLine());
                 }
 
-                if (studentDetails.Any(x => string.IsNullOrWhiteSpace(x))){
+                if (studentDetails.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
                     Console.WriteLine("Vienas is parametru buvo tuscias arba tarpas");
                     Console.ReadLine();
                     RunMenu();
                 }
 
-                var homeworkMarks = studentDetails[2].Split(' ').Select(Int32.Parse).ToList();
+                
 
-                //var homeworkMarks = studentDetails[2].Split(' ').Select(Int32.Parse).ToArray(); - realizacija su masyvu 
+                var homeworkMarks = studentDetails[2].Split(' ').Select(Int32.Parse).ToArray(); 
 
                 Program.Students.Add(Student.Create(studentDetails[0], studentDetails[1], homeworkMarks, Int32.Parse(studentDetails[3])));
                 RunMenu();
@@ -118,7 +119,7 @@ namespace StudentApp.Service
             {
                 Console.WriteLine("Ivyko klaida.");
                 RunMenu();
-            }             
+            }
         }
 
         private static void InputWithRandomGeneratedMarks()
@@ -129,9 +130,8 @@ namespace StudentApp.Service
                 var name = Console.ReadLine();
                 Console.WriteLine(NewStudentAdding[1]);
                 var surname = Console.ReadLine();
-
-                var homeworkMarks = MarksGenerator.GenerateMarks();
-                //var homeworkMarks = AutoGenerator.GenerateArrayMarks(); - realizacija su masyvu 
+                
+                var homeworkMarks = MarksGenerator.GenerateArrayMarks();
                 var examMark = MarksGenerator.GenereateMark();
 
                 Program.Students.Add(Student.Create(name, surname, homeworkMarks, examMark));
