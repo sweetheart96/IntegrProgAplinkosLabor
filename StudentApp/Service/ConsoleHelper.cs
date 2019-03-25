@@ -195,6 +195,8 @@ namespace StudentApp.Service
             try
             {
                 var students = FileReader.ReadFile().OrderBy(x=>x.Name).ThenBy(x=>x.Surname).ToList();
+                Program.Students.AddRange(students);
+
                 Console.WriteLine("{0}{1}{2}", ListHeader, ResultAverage, ResultMedian);
                 PrintOutput(StudentViewModel.ToViewModelWithAverageAndMedian(students, Padding), 4);
 
@@ -205,6 +207,7 @@ namespace StudentApp.Service
             }
 
             Console.ReadLine();
+            RunMenu();
         }
 
         private static void PrintOutput(List<string> items, int howManyColumns)
