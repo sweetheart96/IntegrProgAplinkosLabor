@@ -194,7 +194,7 @@ namespace StudentApp.Service
         {
             try
             {
-                var students = FileReader.ReadFile();
+                var students = FileReader.ReadFile().OrderBy(x=>x.Name).ThenBy(x=>x.Surname).ToList();
                 Console.WriteLine("{0}{1}{2}", ListHeader, ResultAverage, ResultMedian);
                 PrintOutput(StudentViewModel.ToViewModelWithAverageAndMedian(students, Padding), 4);
 

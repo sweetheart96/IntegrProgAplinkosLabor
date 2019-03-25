@@ -15,7 +15,7 @@ namespace StudentApp.Service
         {
             var students = new List<Student>();
             string[] lines = File.ReadAllLines(textFilePath);
-            lines = lines.Skip(1).ToArray();
+            lines = lines.Skip(1).ToArray(); //skipping the header
 
             students.AddRange(FileStudentModel.ToEntity(lines));
 

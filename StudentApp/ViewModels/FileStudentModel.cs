@@ -23,7 +23,6 @@ namespace StudentApp.ViewModels
             var student = Student.Create(words[0], words[1], marks, examMark);
 
             return student;
-
         }
 
         public static List<Student> ToEntity(string[] linesFromFile)
