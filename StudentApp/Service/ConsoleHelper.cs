@@ -21,7 +21,8 @@ namespace StudentApp.Service
             "1. Prideti studenta ir jo pazymius",
             "2. Perziureti sarasa",
             "3. Prideti studenta su atsitiktiniais pazymiais",
-            "4. Baigti darba"
+            "4. Prideti studentus is failo",
+            "5. Baigti darba"
         };
 
         private static List<string> NewStudentAdding = new List<string>
@@ -59,7 +60,10 @@ namespace StudentApp.Service
                         InputWithRandomGeneratedMarks();
                         break;
                     case 4:
-                        EndWork();
+                        ReadFromFile();
+                        break;
+                    case 5:
+                        //EndWork();
                         break;
                     default:
                         WrongMenuNumber();
@@ -96,7 +100,8 @@ namespace StudentApp.Service
                     studentDetails.Add(Console.ReadLine());
                 }
 
-                if (studentDetails.Any(x => string.IsNullOrWhiteSpace(x))){
+                if (studentDetails.Any(x => string.IsNullOrWhiteSpace(x)))
+                {
                     Console.WriteLine("Vienas is parametru buvo tuscias arba tarpas");
                     Console.ReadLine();
                     RunMenu();
@@ -118,7 +123,7 @@ namespace StudentApp.Service
             {
                 Console.WriteLine("Ivyko klaida.");
                 RunMenu();
-            }             
+            }
         }
 
         private static void InputWithRandomGeneratedMarks()
@@ -158,11 +163,11 @@ namespace StudentApp.Service
                 {
                     case 1:
                         Console.WriteLine("{0}{1}", ListHeader, ResultAverage);
-                        PrintOutput(StudentViewModel.ToViewModelWithAverage(Program.Students, Padding));
+                        PrintOutput(StudentViewModel.ToViewModelWithAverage(Program.Students, Padding), 3);
                         break;
                     case 2:
                         Console.WriteLine("{0}{1}", ListHeader, ResultMedian);
-                        PrintOutput(StudentViewModel.ToViewModelWithMedian(Program.Students, Padding));
+                        PrintOutput(StudentViewModel.ToViewModelWithMedian(Program.Students, Padding), 3);
                         break;
                     default:
                         WrongMenuNumber();
@@ -185,9 +190,26 @@ namespace StudentApp.Service
             }
         }
 
-        private static void PrintOutput(List<string> items)
+        public static void ReadFromFile()
         {
-            Console.WriteLine("".PadRight(Padding * 3, DivChar));
+            try
+            {
+                var students = FileReader.ReadFile().OrderBy(x=>x.Name).ThenBy(x=>x.Surname).ToList();
+                Console.WriteLine("{0}{1}{2}", ListHeader, ResultAverage, ResultMedian);
+                PrintOutput(StudentViewModel.ToViewModelWithAverageAndMedian(students, Padding), 4);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Vienas ar daugiau parametru faile ivesti neteisingai");
+            }
+
+            Console.ReadLine();
+        }
+
+        private static void PrintOutput(List<string> items, int howManyColumns)
+        {
+            Console.WriteLine("".PadRight(Padding * howManyColumns, DivChar));
 
             foreach (var item in items)
             {
