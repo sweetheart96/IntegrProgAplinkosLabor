@@ -6,7 +6,7 @@ namespace StudentApp.ViewModels
 {
     public class FileStudentModel
     {
-        private static Student ToEntity(string lineFromFile)
+        public static Student ToEntity(string lineFromFile)
         {
             string[] words = lineFromFile.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
@@ -31,7 +31,7 @@ namespace StudentApp.ViewModels
 
             try
             {
-                foreach(var item in linesFromFile)
+                foreach (var item in linesFromFile)
                 {
                     students.Add(ToEntity(item));
                 }
@@ -43,5 +43,26 @@ namespace StudentApp.ViewModels
 
             return students;
         }
+
+        public static LinkedList<Student> ToEntityIntoLinkedList(string[] linesFromFile)
+        {
+            var students = new LinkedList<Student>();
+
+            try
+            {
+                foreach (var item in linesFromFile)
+                {
+                    students.AddLast(ToEntity(item));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ivyko klaida kuriant Student objekta is failo");
+            }
+
+            return students;
+        }
+        
+
     }
 }
