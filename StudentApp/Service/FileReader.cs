@@ -8,7 +8,7 @@ namespace StudentApp.Service
 {
     public static class FileReader
     {
-        //Default file  
+        //Default file path
         static readonly string Path = "..\\..\\..\\";
 
         public static List<Student> ReadFile()

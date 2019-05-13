@@ -42,68 +42,6 @@ namespace StudentApp.Service
 
         }
 
-        public static void WriteStudentsToFile(LinkedList<Student> students, string fileName)
-        {
-            try
-            {
-                var filePath = Path + fileName;
-                File.Delete(filePath);
-                var mod = students.Count % 10000;
-                var div = students.Count / 10000;
-                var cyclesNumber = div + 1;
-
-                for (int j = 0; j < cyclesNumber; j++)
-                {
-                    var text = string.Empty;
-
-                    for (int i = 1 + j * 10000; i <= (cyclesNumber != j + 1 ? (j + 1) * 10000 : j * 10000 + mod); i++)
-                    {
-                        text += $"{i}. {students.ElementAt(i - 1).Name} {students.ElementAt(i - 1).Surname} {students.ElementAt(i - 1).FinalAverage}" + Environment.NewLine;
-                    }
-
-                    File.AppendAllText(filePath, text);
-                }
-
-                Console.WriteLine($"{students.Count} studentai sekmingi irasyti i {fileName} faila");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ivyko klaida failo generavimo metu: {ex.Message}");
-            }
-
-        }
-
-        public static void WriteStudentsToFile(Queue<Student> students, string fileName)
-        {
-            try
-            {
-                var filePath = Path + fileName;
-                File.Delete(filePath);
-                var mod = students.Count % 10000;
-                var div = students.Count / 10000;
-                var cyclesNumber = div + 1;
-
-                for (int j = 0; j < cyclesNumber; j++)
-                {
-                    var text = string.Empty;
-
-                    for (int i = 1 + j * 10000; i <= (cyclesNumber != j + 1 ? (j + 1) * 10000 : j * 10000 + mod); i++)
-                    {
-                        text += $"{i}. {students.ElementAt(i - 1).Name} {students.ElementAt(i - 1).Surname} {students.ElementAt(i - 1).FinalAverage}" + Environment.NewLine;
-                    }
-
-                    File.AppendAllText(filePath, text);
-                }
-
-                Console.WriteLine($"{students.Count} studentai sekmingi irasyti i {fileName} faila");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ivyko klaida failo generavimo metu: {ex.Message}");
-            }
-
-        }
-
         public static void GenerateFile(int studentsNumber, string fileName)
         {
             if (studentsNumber > 10000)

@@ -72,19 +72,21 @@ namespace StudentApp.Service
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("Blogas formatas - iveskite skaiciu");
+                Console.WriteLine("Blogas formatas - turi buti skaicius. Noredami testi paspauskite enter...");
+                Console.ReadLine();
                 RunMenu();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ivyko klaida");
+                Console.WriteLine("Ivyko klaida. Noredami testi paspauskite enter...");
+                Console.ReadLine();
                 RunMenu();
             }
         }
 
         private static void WrongMenuNumber()
         {
-            Console.WriteLine("Ivestas neteisingas skaicius");
+            Console.WriteLine("Ivestas neteisingas skaicius.");
             RunMenu();
         }
 
@@ -102,7 +104,7 @@ namespace StudentApp.Service
 
                 if (studentDetails.Any(x => string.IsNullOrWhiteSpace(x)))
                 {
-                    Console.WriteLine("Vienas is parametru buvo tuscias arba tarpas");
+                    Console.WriteLine("Vienas is parametru buvo tuscias arba tarpas. Noredami testi paspauskite enter...");
                     Console.ReadLine();
                     RunMenu();
                 }
@@ -116,12 +118,23 @@ namespace StudentApp.Service
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("Vienas ar daugiau parametru ivesti neteisingu formatu.");
+                Console.WriteLine("Vienas ar daugiau parametru ivesti neteisingu formatu. Noredami testi paspauskite enter...");
+                Console.ReadLine();
+
+                RunMenu();
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine("Pazymiai turi buti didesni uz nuli. Noredami testi paspauskite enter...");
+                Console.ReadLine();
+
                 RunMenu();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ivyko klaida.");
+                Console.WriteLine("Ivyko nenumatyta klaida. Noredami testi paspauskite enter...");
+                Console.ReadLine();
+
                 RunMenu();
             }
         }
@@ -140,11 +153,13 @@ namespace StudentApp.Service
                 var examMark = MarksGenerator.GenereateMark();
 
                 Program.Students.Add(Student.Create(name, surname, homeworkMarks, examMark));
+                Console.ReadLine();
+
                 RunMenu();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ivyko klaida.");
+                Console.WriteLine("Ivyko nenumatyta klaida. Noredami testi paspauskite enter...");
                 RunMenu();
             }
         }
@@ -174,23 +189,25 @@ namespace StudentApp.Service
                         break;
                 }
 
+                Console.WriteLine("Noredami testi paspauskite enter...");
                 Console.ReadLine();
+
                 RunMenu();
 
             }
             catch (FormatException ex)
             {
-                Console.WriteLine("Vienas ar daugiau parametru ivesti neteisingu formatu.");
+                Console.WriteLine("Vienas ar daugiau parametru ivesti neteisingu formatu. Noredami testi paspauskite enter...");
                 RunMenu();
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ivyko klaida.");
+                Console.WriteLine("Ivyko nenumatyta klaida. Noredami testi paspauskite enter...");
                 RunMenu();
             }
         }
 
-        public static void ReadFromFile()
+        private static void ReadFromFile()
         {
             try
             {
@@ -203,7 +220,7 @@ namespace StudentApp.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Vienas ar daugiau parametru faile ivesti neteisingai");
+                Console.WriteLine("Vienas ar daugiau parametru faile ivesti neteisingai. Noredami testi paspauskite enter...");
             }
 
             Console.ReadLine();
