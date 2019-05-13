@@ -38,31 +38,11 @@ namespace StudentApp.ViewModels
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Ivyko klaida kuriant Student objekta is failo");
+                Console.WriteLine("Ivyko klaida kuriant Student objekta is failo. Noredami testi paspauskite enter...");
+                Console.ReadLine();
             }
 
             return students;
         }
-
-        public static LinkedList<Student> ToEntityIntoLinkedList(string[] linesFromFile)
-        {
-            var students = new LinkedList<Student>();
-
-            try
-            {
-                foreach (var item in linesFromFile)
-                {
-                    students.AddLast(ToEntity(item));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Ivyko klaida kuriant Student objekta is failo");
-            }
-
-            return students;
-        }
-        
-
     }
 }
