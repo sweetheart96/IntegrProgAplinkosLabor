@@ -10,9 +10,14 @@ Integruotu programavimo aplinku laboratorinis darbas
 
 # Paleidimo instrukcija:
 Visom versijom paleisti reikalingas C# development IDE. Koda reiketu su'build'inti ir pa'run'inti.
+
 Release v 0.1 Programa veikia su list'u ir su array'jumi - priklausomai nuo pasirinkto start-up projekto (ji pakeitus reiketu per nauja su'build'inti solution).
+
 Release v 0.4 Norint atlikti greitaveikos testa reiketu faile "Program.cs" atkomentuoti uzkomentuota koda ir is naujo su'build'inti solution.
+
 Release v 0.5 Paleidus programa pirma pa'run'ins testas, o jam pasibaigus - pagrindinis programos funkcionalumas. Norint paleisti tik pagrindini funkcionaluma reiketu uzkomentuoti koda, kuris yra tarp komentaru "//This block of code only for speed testing" ir "//menu start", Program.cs faile.
+
+Release v1.0 Norint paleisti strategijos 2 greitaveikos testa reiketu atkomentuoti koda, kuris yra tarp komentaru "//This block of code only for speed testing" ir "//menu start", Program.cs faile.
 
 # Greitaveikos testo rezultatai is v0.4 (Intel Corei3-6100 CPU, 8 GB RAM, SSD):
 Failas numeris 1 buvo sugeneruotas, nuskaitytas ir padalintas i du failus (galvociai ir vargsiukai) per 0 sekundziu ir 28 milisekundziu
