@@ -35,5 +35,36 @@ namespace StudentApp.Service
 
             return students;
         }
+
+        public static LinkedList<Student> ReadFileWithoutHeaderToLinkedList(string fileName)
+        {
+            var filePath = Path + fileName;
+
+            var students = new LinkedList<Student>();
+            string[] lines = File.ReadAllLines(filePath);
+
+            foreach(var item in lines)
+            {
+                students.AddLast(FileStudentModel.ToEntity(item));
+            }
+
+            return students;
+        }
+
+        public static Queue<Student> ReadFileWithoutHeaderToQuene(string fileName)
+        {
+
+            var filePath = Path + fileName;
+
+            var students = new Queue<Student>();
+            string[] lines = File.ReadAllLines(filePath);
+
+            foreach(var item in lines)
+            {
+                students.Enqueue(FileStudentModel.ToEntity(item));
+            }
+
+            return students;
+        }
     }
 }
